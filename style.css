@@ -1,6 +1,8 @@
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  cursor: url(./images/baseball_cursor_65x65.png), auto;
 }
 
 img {
@@ -25,7 +27,7 @@ img {
 
 #game_background {
   grid-area: 1 / 1;
-  background-image: url(images/background.png);
+  background-image: url(images/background_800x450.png);
   background-size: cover;
 }
 #game_elements {
@@ -39,88 +41,67 @@ img {
 #pitcher_1_container {
   width: 7%;
   position: absolute;
-  top: 13%;
-  left: 20%;
+  translate: 300% 90%;
 }
 #pitcher_2_container {
   width: 7%;
   position: absolute;
-  top: 13%;
-  left: 33%;
+  translate: 500% 80%;
 }
 #pitcher_3_container {
   width: 7%;
   position: absolute;
-  top: 11%;
-  left: 43%;
+  translate: 700% 70%;
 }
 #pitcher_4_container {
   width: 7%;
   position: absolute;
-  top: 11%;
-  left: 55%;
+  translate: 900% 80%;
 }
 #pitcher_5_container {
   width: 7%;
   position: absolute;
-  top: 14%;
-  left: 70%;
+  translate: 1100% 90%;
 }
 
 #egg_container {
   width: 4%;
   position: absolute;
-  top: 35%;
-  left: 70%;
 }
 
 #toilet_paper_1_container {
   width: 4%;
   position: absolute;
-  top: 40%;
-  left: 65%;
 }
 
 #toilet_paper_2_container {
   width: 4%;
   position: absolute;
-  top: 40%;
-  left: 25%;
 }
 
 #tomato_1_container {
   width: 4%;
   position: absolute;
-  top: 27%;
-  left: 50%;
 }
 
 #tomato_2_container {
   width: 4%;
   position: absolute;
-  top: 35%;
-  left: 39%;
 }
 
 #baseball_1_container {
   width: 4%;
   position: absolute;
-  top: 50%;
-  left: 50%;
 }
 
 #baseball_2_container {
   width: 4%;
   position: absolute;
-  top: 40%;
-  left: 30%;
 }
 
 #baseball_3_container {
   width: 4%;
   position: absolute;
-  top: 37%;
-  left: 75%;
 }
 
 #game_foreground {
@@ -168,4 +149,69 @@ img {
   position: absolute;
   top: 0%;
   left: 90%;
+}
+
+/* -------------------------------------- Animationer ---------------------------------- */
+
+.pitcher1_1 {
+  animation-name: pitcher1_1;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pitcher1_1 {
+  0% {
+    transform: translate(500%, 700%);
+  }
+
+  25% {
+    transform: translate(625%, 1650%) scale(1.1);
+  }
+
+  50% {
+    transform: translate(750%, 2600%) scale(1.4);
+  }
+
+  75% {
+    transform: translate(875%, 3550%) scale(1.9);
+  }
+
+  100% {
+    transform: translate(1000%, 4500%) scale(2.5);
+  }
+}
+
+.pitcher1_2 {
+  animation-name: pitcher1_2;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transform-origin: 250% 0;
+}
+
+@keyframes pitcher1_2 {
+  0% {
+    transform: translate(500%, 700%);
+  }
+
+  25% {
+    transform: translate(625%, 1525%) rotate(72deg) scale(1.1);
+  }
+
+  50% {
+    transform: translate(750%, 2350%) rotate(calc(72deg * 2)) scale(1.4);
+  }
+
+  75% {
+    transform: translate(875%, 3175%) rotate(calc(72deg * 3)) scale(1.9);
+  }
+
+  100% {
+    transform: translate(1000%, 4000%) rotate(calc(72deg * 4)) scale(2.5);
+  }
+}
+
+.paused {
+  animation-play-state: paused;
 }
