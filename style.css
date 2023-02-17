@@ -27,7 +27,7 @@ img {
 
 #game_background {
   grid-area: 1 / 1;
-  background-image: url(images/background_800x450.png);
+  background-image: url(images/background.png);
   background-size: cover;
 }
 #game_elements {
@@ -36,7 +36,7 @@ img {
   overflow: hidden;
 }
 
-/* spil elementer */
+/* Game elements (ID's) */
 
 #pitcher_1_container {
   width: 7%;
@@ -69,9 +69,24 @@ img {
   position: absolute;
 }
 
+#egg_splat_sprite {
+  scale: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 #toilet_paper_1_container {
   width: 4%;
   position: absolute;
+}
+
+#toilet_paper_1_splat_sprite {
+  scale: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
 }
 
 #toilet_paper_2_container {
@@ -79,14 +94,36 @@ img {
   position: absolute;
 }
 
+#toilet_paper_2_splat_sprite {
+  scale: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+}
+
 #tomato_1_container {
   width: 4%;
   position: absolute;
 }
 
+#tomato_1_splat_sprite {
+  scale: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 #tomato_2_container {
   width: 4%;
   position: absolute;
+}
+
+#tomato_2_splat_sprite {
+  scale: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 #baseball_1_container {
@@ -106,7 +143,7 @@ img {
 
 #game_foreground {
   grid-area: 1 / 1;
-  background-image: url(svg/forgrund.svg);
+  /* background-image: url(svg/forgrund.svg); */
   background-size: cover;
   position: relative;
   overflow: hidden;
@@ -153,65 +190,446 @@ img {
 
 /* -------------------------------------- Animationer ---------------------------------- */
 
-.pitcher1_1 {
-  animation-name: pitcher1_1;
+.pitcher1_straight {
+  animation-name: pitcher1_straight;
   animation-duration: 3s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 
-@keyframes pitcher1_1 {
+@keyframes pitcher1_straight {
   0% {
-    transform: translate(500%, 700%);
-  }
-
-  25% {
-    transform: translate(625%, 1650%) scale(1.1);
-  }
-
-  50% {
-    transform: translate(750%, 2600%) scale(1.4);
-  }
-
-  75% {
-    transform: translate(875%, 3550%) scale(1.9);
+    transform: translate(500%, 200%);
   }
 
   100% {
-    transform: translate(1000%, 4500%) scale(2.5);
+    transform: translate(1000%, 1400%) scale(3);
   }
 }
 
-.pitcher1_2 {
-  animation-name: pitcher1_2;
+@keyframes move {
+  0% {
+    transform: translateX(0) translateY(-100px) rotate(0deg);
+  }
+  50% {
+    transform: translateX(200px) translateY(100px) rotate(90deg);
+  }
+  100% {
+    transform: translateX(400px) translateY(-100px) rotate(180deg);
+  }
+}
+
+.pitcher1_straight {
+  animation: move 2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  border-radius: 100px;
+}
+/* 
+.pitcher1_left {
+animation-name: pitcher1_left;
+animation-duration: 3s;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
+transform-origin: -10% 50%;
+}
+
+@keyframes pitcher1_left {
+0% {
+transform: translate(500%, 200%);
+}
+
+25% {
+transform: translate(300%, 500%) rotate(-90deg) scale(1.5);
+}
+
+50% {
+transform: translate(400%, 800%) rotate(-240deg) scale(2);
+}
+
+75% {
+transform: translate(650%, 1100%) rotate(-340deg) scale(2.5);
+}
+
+100% {
+transform: translate(1000%, 1400%) rotate(-390deg) scale(3);
+}
+} */
+
+.pitcher1_right {
+  animation-name: pitcher1_right;
   animation-duration: 3s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  transform-origin: 250% 0;
+  transform-origin: 50% 0%;
 }
 
-@keyframes pitcher1_2 {
+@keyframes pitcher1_right {
   0% {
-    transform: translate(500%, 700%);
+    transform: translate(500%, 200%);
   }
 
-  25% {
-    transform: translate(625%, 1525%) rotate(72deg) scale(1.1);
+  20% {
+    transform: translate(900%, 250%) rotate(90deg);
   }
 
   50% {
-    transform: translate(750%, 2350%) rotate(calc(72deg * 2)) scale(1.4);
+    transform: translate(1200%, 600%) rotate(240deg) scale(1.5);
   }
 
   75% {
-    transform: translate(875%, 3175%) rotate(calc(72deg * 3)) scale(1.9);
+    transform: translate(1300%, 1000%) rotate(340deg) scale(2.5);
   }
 
   100% {
-    transform: translate(1000%, 4000%) rotate(calc(72deg * 4)) scale(2.5);
+    transform: translate(1000%, 1400%) rotate(390deg) scale(3);
+  }
+}
+
+.pitcher2_straight {
+  animation-name: pitcher2_straight;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pitcher2_straight {
+  0% {
+    transform: translate(1000%, 200%);
+  }
+
+  100% {
+    transform: translate(1000%, 1400%) scale(3);
+  }
+}
+
+.pitcher2_left {
+  animation-name: pitcher2_left;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transform-origin: -10% 50%;
+}
+
+@keyframes pitcher2_left {
+  0% {
+    transform: translate(1000%, 200%);
+  }
+
+  25% {
+    transform: translate(600%, 500%) rotate(-90deg) scale(1.5);
+  }
+
+  50% {
+    transform: translate(700%, 800%) rotate(-240deg) scale(2);
+  }
+
+  75% {
+    transform: translate(800%, 1100%) rotate(-340deg) scale(2.5);
+  }
+
+  100% {
+    transform: translate(1100%, 1500%) rotate(-390deg) scale(3);
+  }
+}
+
+.pitcher2_right {
+  animation-name: pitcher2_right;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transform-origin: 50% 0%;
+}
+
+@keyframes pitcher2_right {
+  0% {
+    transform: translate(1000%, 200%);
+  }
+
+  15% {
+    transform: translate(1200%, 300%) rotate(90deg);
+  }
+
+  50% {
+    transform: translate(1500%, 650%) rotate(240deg) scale(1.5);
+  }
+
+  75% {
+    transform: translate(1300%, 1000%) rotate(340deg) scale(2.5);
+  }
+
+  100% {
+    transform: translate(1000%, 1400%) rotate(390deg) scale(3);
+  }
+}
+
+.pitcher3_straight {
+  animation-name: pitcher3_straight;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pitcher3_straight {
+  0% {
+    transform: translate(1240%, 200%);
+  }
+
+  100% {
+    transform: translate(1000%, 1400%) scale(3);
+  }
+}
+
+.pitcher3_left {
+  animation-name: pitcher3_left;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transform-origin: -10% 50%;
+}
+
+@keyframes pitcher3_left {
+  0% {
+    transform: translate(1240%, 200%);
+  }
+
+  25% {
+    transform: translate(950%, 400%) rotate(-90deg) scale(1.5);
+  }
+
+  50% {
+    transform: translate(800%, 650%) rotate(-240deg) scale(2);
+  }
+
+  75% {
+    transform: translate(800%, 1100%) rotate(-340deg) scale(2.5);
+  }
+
+  100% {
+    transform: translate(1100%, 1500%) rotate(-390deg) scale(3);
+  }
+}
+
+.pitcher3_right {
+  animation-name: pitcher3_right;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transform-origin: 50% 0%;
+}
+
+@keyframes pitcher3_right {
+  0% {
+    transform: translate(1240%, 200%);
+  }
+
+  20% {
+    transform: translate(1500%, 300%) rotate(90deg);
+  }
+
+  50% {
+    transform: translate(1750%, 650%) rotate(240deg) scale(1.5);
+  }
+
+  75% {
+    transform: translate(1500%, 1000%) rotate(340deg) scale(2.5);
+  }
+
+  100% {
+    transform: translate(1000%, 1400%) rotate(390deg) scale(3);
+  }
+}
+
+.pitcher4_straight {
+  animation-name: pitcher4_straight;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pitcher4_straight {
+  0% {
+    transform: translate(1500%, 200%);
+  }
+
+  100% {
+    transform: translate(1000%, 1400%) scale(3);
+  }
+}
+
+.pitcher4_left {
+  animation-name: pitcher4_left;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transform-origin: -10% 50%;
+}
+
+@keyframes pitcher4_left {
+  0% {
+    transform: translate(1500%, 200%);
+  }
+
+  25% {
+    transform: translate(1200%, 400%) rotate(-90deg) scale(1.5);
+  }
+
+  50% {
+    transform: translate(1000%, 650%) rotate(-240deg) scale(2);
+  }
+
+  75% {
+    transform: translate(1000%, 1100%) rotate(-340deg) scale(2.5);
+  }
+
+  100% {
+    transform: translate(1100%, 1500%) rotate(-390deg) scale(3);
+  }
+}
+
+.pitcher4_right {
+  animation-name: pitcher4_right;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transform-origin: 30% -10%;
+}
+
+@keyframes pitcher4_right {
+  0% {
+    transform: translate(1500%, 200%);
+  }
+
+  20% {
+    transform: translate(1700%, 350%) rotate(90deg);
+  }
+
+  50% {
+    transform: translate(1900%, 700%) rotate(240deg) scale(1.5);
+  }
+
+  75% {
+    transform: translate(1700%, 900%) rotate(340deg) scale(2.5);
+  }
+
+  100% {
+    transform: translate(1000%, 1400%) rotate(390deg) scale(3);
+  }
+}
+
+.pitcher5_straight {
+  animation-name: pitcher5_straight;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pitcher5_straight {
+  0% {
+    transform: translate(1900%, 200%);
+  }
+
+  100% {
+    transform: translate(1000%, 1400%) scale(3);
+  }
+}
+
+.pitcher5_straight {
+  animation-name: pitcher5_left;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transform-origin: -10% 50%;
+}
+
+@keyframes pitcher5_left {
+  0% {
+    transform: translate(1900%, 200%);
+  }
+
+  25% {
+    transform: translate(1400%, 400%) rotate(-90deg) scale(1.3);
+  }
+
+  50% {
+    transform: translate(1200%, 650%) rotate(-240deg) scale(2);
+  }
+
+  75% {
+    transform: translate(1000%, 1100%) rotate(-340deg) scale(2.5);
+  }
+
+  100% {
+    transform: translate(900%, 1500%) rotate(-390deg) scale(3);
+  }
+}
+
+.pitcher5_straight {
+  animation-name: pitcher5_right;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transform-origin: 30% -10%;
+}
+
+@keyframes pitcher5_right {
+  0% {
+    transform: translate(2000%, 150%);
+  }
+
+  15% {
+    transform: translate(2250%, 300%) rotate(90deg) scale(1.2);
+  }
+
+  45% {
+    transform: translate(2200%, 700%) rotate(240deg) scale(1.5);
+  }
+
+  75% {
+    transform: translate(1600%, 900%) rotate(340deg) scale(2.5);
+  }
+
+  100% {
+    transform: translate(900%, 1400%) rotate(390deg) scale(3);
   }
 }
 
 .paused {
   animation-play-state: paused;
+}
+
+/* ---------------- SPLAT ANIMATIONS ------------------------*/
+
+.zoom_in {
+  animation-name: zoom_in;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+@keyframes zoom_in {
+  0% {
+    scale: 0;
+  }
+
+  100% {
+    scale: 1.5;
+  }
+}
+
+.zoom_out {
+  animation-name: zoom_out;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+@keyframes zoom_out {
+  0% {
+    scale: 1;
+  }
+
+  100% {
+    scale: 0;
+  }
 }
