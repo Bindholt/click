@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="da" class="remove_pointer">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,31 +8,31 @@
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body>
-    <div id="screen">
-      <div id="game">
-        <div id="game_background"></div>
-        <div id="game_elements">
-          <div id="pitcher_1_container">
+  <body class="remove_pointer">
+    <div id="screen" class="remove_pointer">
+      <div id="game" class="remove_pointer">
+        <div id="game_background" class="remove_pointer"></div>
+        <div id="game_elements" class="remove_pointer">
+          <div id="pitcher_1_container" class="big_container">
             <img id="pitcher_1_sprite" src="images/pitcher_1.png" alt="" />
           </div>
-          <div id="pitcher_2_container">
+          <div id="pitcher_2_container" class="big_container">
             <img id="pitcher_2_sprite" src="images/pitcher_2.png" alt="" />
           </div>
-          <div id="pitcher_3_container">
+          <div id="pitcher_3_container" class="big_container">
             <img id="pitcher_3_sprite" src="images/pitcher_3.png" alt="" />
           </div>
-          <div id="pitcher_4_container">
+          <div id="pitcher_4_container" class="big_container">
             <img id="pitcher_4_sprite" src="images/pitcher_4.png" alt="" />
           </div>
-          <div id="pitcher_5_container">
+          <div id="pitcher_5_container" class="big_container">
             <img id="pitcher_5_sprite" src="images/pitcher_5.png" alt="" />
           </div>
-          <div id="egg_container" class="pitcher1_straight">
+          <div id="egg_container" class="small_container">
             <img id="egg_sprite" src="images/egg.png" alt="" />
             <img id="egg_splat_sprite" src="images/egg_splat.png" alt="" />
           </div>
-          <div id="toilet_paper_1_container" class="pitcher2_straight">
+          <div id="toilet_paper_1_container" class="small_container">
             <img
               id="toilet_paper_1_sprite"
               src="images/toilet_paper_1.png"
@@ -44,7 +44,7 @@
               alt=""
             />
           </div>
-          <div id="toilet_paper_2_container" class="pitcher5_straight">
+          <div id="toilet_paper_2_container" class="small_container">
             <img
               id="toilet_paper_2_sprite"
               src="images/toilet_paper_2.png"
@@ -56,7 +56,7 @@
               alt=""
             />
           </div>
-          <div id="tomato_1_container" class="pitcher3_straight">
+          <div id="tomato_1_container" class="small_container">
             <img id="tomato_1_sprite" src="images/tomato_1.png" alt="" />
             <img
               id="tomato_1_splat_sprite"
@@ -64,7 +64,8 @@
               alt=""
             />
           </div>
-          <div id="tomato_2_container">
+
+          <div id="tomato_2_container" class="small_container">
             <img id="tomato_2_sprite" src="images/tomato_2.png" alt="" />
             <img
               id="tomato_2_splat_sprite"
@@ -72,28 +73,41 @@
               alt=""
             />
           </div>
-          <div id="baseball_1_container" class="pitcher4_straight">
+          <div
+            id="baseball_1_container"
+            onclick="ballhit();"
+            class="small_container"
+          >
             <img id="baseball_1_sprite" src="images/baseball.png" alt="" />
           </div>
-          <div id="baseball_2_container">
+          <div id="baseball_2_container" class="small_container">
             <img id="baseball_2_sprite" src="images/baseball.png" alt="" />
           </div>
-          <div id="baseball_3_container">
+          <div id="baseball_3_container" class="small_container">
             <img id="baseball_3_sprite" src="images/baseball.png" alt="" />
           </div>
         </div>
         <div id="game_foreground"></div>
         <div id="game_ui">
-          <img id="time_board" src="images/hourglass.png" />
+          <div id="time_board" class="big_container">
+            <img src="images/hourglass.png" />
+          </div>
           <!-- <img id="score_board" src="svg/ui_points.svg" /> -->
-          <img id="heart_1" src="images/heart.png" />
-          <img id="heart_2" src="images/heart.png" />
-          <img id="heart_3" src="images/heart.png" />
+          <div id="heart_1" class="small_container">
+            <img src="images/heart.png" />
+          </div>
+          <div id="heart_2" class="small_container">
+            <img src="images/heart.png" />
+          </div>
+          <div id="heart_3" class="small_container">
+            <img src="images/heart.png" />
+          </div>
         </div>
       </div>
       <div id="start"></div>
       <div id="game_over"></div>
       <div id="level_complete"></div>
     </div>
+    <script src="app.js"></script>
   </body>
 </html>

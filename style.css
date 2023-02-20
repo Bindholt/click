@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  cursor: url(./images/baseball_cursor_65x65.png), auto;
+  /* cursor: url(./images/baseball_cursor_65x65.png), auto; */
 }
 
 img {
@@ -37,36 +37,33 @@ img {
 }
 
 /* Game elements (ID's) */
+.big_container {
+  width: 7%;
+  position: absolute;
+}
+
+.small_container {
+  width: 4%;
+  position: absolute;
+}
 
 #pitcher_1_container {
-  width: 7%;
-  position: absolute;
   translate: 300% 90%;
 }
+
 #pitcher_2_container {
-  width: 7%;
-  position: absolute;
   translate: 500% 80%;
 }
+
 #pitcher_3_container {
-  width: 7%;
-  position: absolute;
   translate: 700% 70%;
 }
 #pitcher_4_container {
-  width: 7%;
-  position: absolute;
   translate: 900% 80%;
 }
-#pitcher_5_container {
-  width: 7%;
-  position: absolute;
-  translate: 1100% 90%;
-}
 
-#egg_container {
-  width: 4%;
-  position: absolute;
+#pitcher_5_container {
+  translate: 1100% 90%;
 }
 
 #egg_splat_sprite {
@@ -74,11 +71,6 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-}
-
-#toilet_paper_1_container {
-  width: 4%;
-  position: absolute;
 }
 
 #toilet_paper_1_splat_sprite {
@@ -89,22 +81,12 @@ img {
   border-radius: 50%;
 }
 
-#toilet_paper_2_container {
-  width: 4%;
-  position: absolute;
-}
-
 #toilet_paper_2_splat_sprite {
   scale: 0;
   position: absolute;
   top: 0;
   left: 0;
   border-radius: 50%;
-}
-
-#tomato_1_container {
-  width: 4%;
-  position: absolute;
 }
 
 #tomato_1_splat_sprite {
@@ -114,31 +96,11 @@ img {
   left: 0;
 }
 
-#tomato_2_container {
-  width: 4%;
-  position: absolute;
-}
-
 #tomato_2_splat_sprite {
   scale: 0;
   position: absolute;
   top: 0;
   left: 0;
-}
-
-#baseball_1_container {
-  width: 4%;
-  position: absolute;
-}
-
-#baseball_2_container {
-  width: 4%;
-  position: absolute;
-}
-
-#baseball_3_container {
-  width: 4%;
-  position: absolute;
 }
 
 #game_foreground {
@@ -156,8 +118,6 @@ img {
 
 /* ui-elementer */
 #time_board {
-  width: 7%;
-  position: absolute;
   top: 0%;
   left: 4%;
 }
@@ -168,27 +128,21 @@ img {
   left: 11%;
 }
 #heart_1 {
-  width: 4%;
-  position: absolute;
   top: 0%;
   left: 80%;
 }
 
 #heart_2 {
-  width: 4%;
-  position: absolute;
   top: 0%;
   left: 85%;
 }
 
 #heart_3 {
-  width: 4%;
-  position: absolute;
   top: 0%;
   left: 90%;
 }
 
-/* -------------------------------------- Animationer ---------------------------------- */
+/* -------------------------------------- Pitch animations ---------------------------------- */
 
 .pitcher1_straight {
   animation-name: pitcher1_straight;
@@ -272,6 +226,7 @@ img {
   animation-duration: 3s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
 }
 
 @keyframes pitcher2_straight {
@@ -545,7 +500,7 @@ img {
   }
 }
 
-.pitcher5_straight {
+.pitcher5_right {
   animation-name: pitcher5_right;
   animation-duration: 3s;
   animation-timing-function: linear;
@@ -615,4 +570,21 @@ img {
   100% {
     scale: 0;
   }
+}
+
+.ball_hit {
+  animation-name: ball_hit;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+}
+
+@keyframes ball_hit {
+  100% {
+    transform: translateY(-1000%);
+  }
+}
+
+.remove_pointer {
+  pointer-events: none;
 }
