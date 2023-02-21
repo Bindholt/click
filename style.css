@@ -45,6 +45,7 @@ img {
 .small_container {
   width: 4%;
   position: absolute;
+  transform: translateX(-100%);
 }
 
 #pitcher_1_container {
@@ -144,14 +145,14 @@ img {
 
 /* -------------------------------------- Pitch animations ---------------------------------- */
 
-.pitcher1_straight {
-  animation-name: pitcher1_straight;
+.pitcher_straight_1 {
+  animation-name: pitcher_straight_1;
   animation-duration: 3s;
   animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
 }
 
-@keyframes pitcher1_straight {
+@keyframes pitcher_straight_1 {
   0% {
     transform: translate(500%, 200%);
   }
@@ -161,15 +162,15 @@ img {
   }
 }
 
-.pitcher1_left {
-  animation-name: pitcher1_left;
+.pitcher_left_1 {
+  animation-name: pitcher_left_1;
   animation-duration: 3s;
   animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
   transform-origin: -10% 50%;
 }
 
-@keyframes pitcher1_left {
+@keyframes pitcher_left_1 {
   0% {
     transform: translate(500%, 200%);
   }
@@ -191,15 +192,15 @@ img {
   }
 }
 
-.pitcher1_right {
-  animation-name: pitcher1_right;
+.pitcher_right_1 {
+  animation-name: pitcher_right_1;
   animation-duration: 3s;
   animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
   transform-origin: 50% 0%;
 }
 
-@keyframes pitcher1_right {
+@keyframes pitcher_right_1 {
   0% {
     transform: translate(500%, 200%);
   }
@@ -221,15 +222,14 @@ img {
   }
 }
 
-.pitcher2_straight {
-  animation-name: pitcher2_straight;
+.pitcher_straight_2 {
+  animation-name: pitcher_straight_2;
   animation-duration: 3s;
   animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
 }
 
-@keyframes pitcher2_straight {
+@keyframes pitcher_straight_2 {
   0% {
     transform: translate(1000%, 200%);
   }
@@ -239,15 +239,15 @@ img {
   }
 }
 
-.pitcher2_left {
-  animation-name: pitcher2_left;
+.pitcher_left_2 {
+  animation-name: pitcher_left_2;
   animation-duration: 3s;
   animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
   transform-origin: -10% 50%;
 }
 
-@keyframes pitcher2_left {
+@keyframes pitcher_left_2 {
   0% {
     transform: translate(1000%, 200%);
   }
@@ -269,15 +269,15 @@ img {
   }
 }
 
-.pitcher2_right {
-  animation-name: pitcher2_right;
+.pitcher_right_2 {
+  animation-name: pitcher_right_2;
   animation-duration: 3s;
   animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
   transform-origin: 50% 0%;
 }
 
-@keyframes pitcher2_right {
+@keyframes pitcher_right_2 {
   0% {
     transform: translate(1000%, 200%);
   }
@@ -299,14 +299,14 @@ img {
   }
 }
 
-.pitcher3_straight {
-  animation-name: pitcher3_straight;
+.pitcher_straight_3 {
+  animation-name: pitcher_straight_3;
   animation-duration: 3s;
   animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
 }
 
-@keyframes pitcher3_straight {
+@keyframes pitcher_straight_3 {
   0% {
     transform: translate(1240%, 200%);
   }
@@ -316,15 +316,15 @@ img {
   }
 }
 
-.pitcher3_left {
-  animation-name: pitcher3_left;
+.pitcher_left_3 {
+  animation-name: pitcher_left_3;
   animation-duration: 3s;
   animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
   transform-origin: -10% 50%;
 }
 
-@keyframes pitcher3_left {
+@keyframes pitcher_left_3 {
   0% {
     transform: translate(1240%, 200%);
   }
@@ -346,15 +346,15 @@ img {
   }
 }
 
-.pitcher3_right {
-  animation-name: pitcher3_right;
+.pitcher_right_3 {
+  animation-name: pitcher_right_3;
   animation-duration: 3s;
   animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
   transform-origin: 50% 0%;
 }
 
-@keyframes pitcher3_right {
+@keyframes pitcher_right_3 {
   0% {
     transform: translate(1240%, 200%);
   }
@@ -376,14 +376,14 @@ img {
   }
 }
 
-.pitcher4_straight {
-  animation-name: pitcher4_straight;
+.pitcher_straight_4 {
+  animation-name: pitcher_straight_4;
   animation-duration: 3s;
   animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
 }
 
-@keyframes pitcher4_straight {
+@keyframes pitcher_straight_4 {
   0% {
     transform: translate(1500%, 200%);
   }
@@ -393,15 +393,15 @@ img {
   }
 }
 
-.pitcher4_left {
-  animation-name: pitcher4_left;
+.pitcher_left_4 {
+  animation-name: pitcher_left_4;
   animation-duration: 3s;
   animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
   transform-origin: -10% 50%;
 }
 
-@keyframes pitcher4_left {
+@keyframes pitcher_left_4 {
   0% {
     transform: translate(1500%, 200%);
   }
@@ -423,15 +423,15 @@ img {
   }
 }
 
-.pitcher4_right {
-  animation-name: pitcher4_right;
+.pitcher_right_4 {
+  animation-name: pitcher_right_4;
   animation-duration: 3s;
   animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
   transform-origin: 30% -10%;
 }
 
-@keyframes pitcher4_right {
+@keyframes pitcher_right_4 {
   0% {
     transform: translate(1500%, 200%);
   }
@@ -453,14 +453,14 @@ img {
   }
 }
 
-.pitcher5_straight {
-  animation-name: pitcher5_straight;
+.pitcher_straight_5 {
+  animation-name: pitcher_straight_5;
   animation-duration: 3s;
   animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
 }
 
-@keyframes pitcher5_straight {
+@keyframes pitcher_straight_5 {
   0% {
     transform: translate(1900%, 200%);
   }
@@ -470,15 +470,15 @@ img {
   }
 }
 
-.pitcher5_straight {
-  animation-name: pitcher5_left;
+.pitcher_left_5 {
+  animation-name: pitcher_left_5;
   animation-duration: 3s;
   animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
   transform-origin: -10% 50%;
 }
 
-@keyframes pitcher5_left {
+@keyframes pitcher_left_5 {
   0% {
     transform: translate(1900%, 200%);
   }
@@ -500,15 +500,15 @@ img {
   }
 }
 
-.pitcher5_right {
-  animation-name: pitcher5_right;
+.pitcher_right_5 {
+  animation-name: pitcher_right_5;
   animation-duration: 3s;
   animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
   transform-origin: 30% -10%;
 }
 
-@keyframes pitcher5_right {
+@keyframes pitcher_right_5 {
   0% {
     transform: translate(2000%, 150%);
   }
@@ -528,10 +528,6 @@ img {
   100% {
     transform: translate(900%, 1400%) rotate(390deg) scale(3);
   }
-}
-
-.paused {
-  animation-play-state: paused;
 }
 
 /* ---------------- SPLAT ANIMATIONS ------------------------*/
@@ -588,4 +584,41 @@ img {
 
 .remove_pointer {
   pointer-events: none;
+}
+
+.paused {
+  animation-play-state: paused;
+}
+
+/*------------------------------- ANIMATION DELAYS ----------------------------*/
+.animation_delay_1 {
+  animation-delay: 1s;
+}
+
+.animation_delay_2 {
+  animation-delay: 2s;
+}
+
+.animation_delay_3 {
+  animation-delay: 3s;
+}
+
+.animation_delay_4 {
+  animation-delay: 4s;
+}
+
+.animation_delay_5 {
+  animation-delay: 5s;
+}
+
+.animation_delay_6 {
+  animation-delay: 6s;
+}
+
+.animation_delay_7 {
+  animation-delay: 7s;
+}
+
+.animation_delay_8 {
+  animation-delay: 8s;
 }
