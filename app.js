@@ -31,6 +31,7 @@ function startAnimations() {
 }
 
 function setAnimationPitcher() {
+  console.log("1");
   shuffleArray(arr_elements);
   pitcher_number = Math.floor(Math.random() * 6);
   let arr_animations = ["pitcher_straight_", "pitcher_left_", "pitcher_right_"];
@@ -38,21 +39,20 @@ function setAnimationPitcher() {
   let animation = arr_animations[0] + pitcher_number;
   let element = arr_elements.pop();
   let delay = Math.floor(Math.random() * 5);
-
+  console.log("2");
   // document
   //   .querySelector(`#${element}`)
   //   .classList.add(`animation_delay_${delay}`);
   document.querySelector(`#${element}`).classList.add(animation);
+  console.log("3");
 }
 
 function animationEnd(element) {
-  console.log("Animation ended!");
   console.log(element);
   document.querySelector(`#${element}`).classList = "small_container";
 
   arr_elements.push(element);
-
-  setAnimationPitcher(Math.floor(Math.random() * 6));
+  setAnimationPitcher();
 }
 
 function setEventListeners() {
