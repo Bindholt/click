@@ -574,14 +574,15 @@ img {
 
 .ball_hit {
   animation-name: ball_hit;
-  animation-duration: 1s;
+  animation-duration: 2s;
   animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
   animation-iteration-count: 1;
 }
 
 @keyframes ball_hit {
   100% {
-    transform: translateY(-1000%);
+    transform: translateY(-1000%) scale(0);
   }
 }
 
