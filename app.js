@@ -1,3 +1,4 @@
+"use strict";
 window.addEventListener("load", start);
 
 let arr_elements = [
@@ -22,40 +23,52 @@ function shuffleArray(arr) {
 }
 
 function start() {
+  setAnimation();
   setEventListeners();
-  startAnimations();
+  setAnimation();
 }
 
-function startAnimations() {
+function setAnimation() {
+  document
+    .querySelector("#baseball_1_container")
+    .classList.add("pitcher1_straight");
   setAnimationPitcher();
 }
 
 function setAnimationPitcher() {
-  console.log("1");
   shuffleArray(arr_elements);
-  pitcher_number = Math.floor(Math.random() * 6);
+  let pitcher_number = Math.floor(Math.random() * 6);
   let arr_animations = ["pitcher_straight_", "pitcher_left_", "pitcher_right_"];
   shuffleArray(arr_animations);
   let animation = arr_animations[0] + pitcher_number;
   let element = arr_elements.pop();
   let delay = Math.floor(Math.random() * 5);
-  console.log("2");
+
   // document
   //   .querySelector(`#${element}`)
   //   .classList.add(`animation_delay_${delay}`);
   document.querySelector(`#${element}`).classList.add(animation);
-  console.log("3");
+
+  document.querySelector(`#${element}`).style.animation = "none";
+  document.querySelector(`#${element}`).offsetWidth; // trigger reflow
+  document.querySelector(`#${element}`).style.animation = null;
 }
 
 function animationEnd(element) {
+  console.log("Animation ended!");
   console.log(element);
+
   document.querySelector(`#${element}`).classList = "small_container";
 
   arr_elements.push(element);
-  setAnimationPitcher();
+
+  setAnimationPitcher(Math.floor(Math.random() * 6));
 }
 
 function setEventListeners() {
+  document
+    .querySelector("#baseball_1_container")
+    .addEventListener("click", ballHit);
   for (let i = 0; i < arr_elements.length; i++) {
     console.log(arr_elements[i]);
     let current_element = arr_elements[i];
