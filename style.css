@@ -31,6 +31,7 @@ img {
   background-image: url(images/background.png);
   background-size: cover;
 }
+
 #game_elements {
   grid-area: 1 / 1;
   position: relative;
@@ -47,7 +48,7 @@ img {
 .small_container {
   width: 4%;
   position: absolute;
-  transform: translateX(-100%);
+  transform: translateX(-200%);
   animation-duration: 4s;
   z-index: 1;
 }
@@ -546,13 +547,13 @@ img {
   animation-name: ball_hit;
   animation-duration: 5s;
   animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
+  animation-fill-mode: backwards;
   animation-iteration-count: 1;
 }
 
 @keyframes ball_hit {
   100% {
-    transform: translateY(-1000%) translateX(700%) scale(0.5);
+    transform: translateY(-1000%) scale(0.5);
   }
 }
 
