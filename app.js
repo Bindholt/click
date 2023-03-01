@@ -1,6 +1,11 @@
 "use strict";
 window.addEventListener("load", onload);
 
+let lives = 3;
+let points = 0;
+const startGameBtn = document.querySelector("#start_game_btn");
+const gameOverBtn = document.querySelector("#game_over_btn");
+const levelCompleteBtn = document.querySelector("#level_complete_btn");
 const eggContainer = document.querySelector("#egg_container");
 const egg2Container = document.querySelector("#egg_2_container");
 const toiletPaperContainer = document.querySelector(
@@ -43,21 +48,29 @@ let currentAnimation4 = "";
 let currentAnimation5 = "";
 
 function onload() {
+  startGameBtn.classList.add("pulse");
+  startGameBtn.addEventListener("click", startGame);
+  gameOverBtn.addEventListener("click", retryGame);
+  levelCompleteBtn.addEventListener("click", retryGame);
+}
+
+function startGame(){
+  document.querySelector("#start").style = "display:none;"
   eggContainer.addEventListener("animationend", handleAnimationEnd);
   toiletPaperContainer.addEventListener("animationend", handleAnimationEnd);
-  baseballContainer.addEventListener("animationend", handleAnimationEnd);
+  baseballContainer.addEventListener("animationend", handleMissedBall);
   sodaContainer.addEventListener("animationend", handleAnimationEnd);
   tomatoContainer.addEventListener("animationend", handleAnimationEnd);
-  baseball2Container.addEventListener("animationend", handleAnimationEnd);
+  baseball2Container.addEventListener("animationend", handleMissedBall);
   hotdogContainer.addEventListener("animationend", handleAnimationEnd);
   toiletPaper2Container.addEventListener("animationend", handleAnimationEnd);
-  baseball3Container.addEventListener("animationend", handleAnimationEnd);
+  baseball3Container.addEventListener("animationend", handleMissedBall);
   soda2Container.addEventListener("animationend", handleAnimationEnd);
   tomato2Container.addEventListener("animationend", handleAnimationEnd);
-  baseball4Container.addEventListener("animationend", handleAnimationEnd);
+  baseball4Container.addEventListener("animationend", handleMissedBall);
   egg2Container.addEventListener("animationend", handleAnimationEnd);
   hotdog2Container.addEventListener("animationend", handleAnimationEnd);
-  baseball5Container.addEventListener("animationend", handleAnimationEnd);
+  baseball5Container.addEventListener("animationend", handleMissedBall);
 
   eggContainer.addEventListener("mousedown", trashHit);
   toiletPaperContainer.addEventListener("mousedown", trashHit);
@@ -169,6 +182,11 @@ function handleAnimationEnd() {
   } 
 }
 
+function handleMissedBall() {
+  console.log("OUCH! YOU MISSED!!");
+  loseLives();
+  handleAnimationEnd.call(this);
+}
 
 function animationEnd() {
   setAnimation(
@@ -228,7 +246,7 @@ function ballHit() {
   console.log("ballHit");
   //Removes click event from ball to prevent exploiting future point system
   this.removeEventListener("mousedown", ballHit);
-  this.removeEventListener("animationend", handleAnimationEnd);
+  this.removeEventListener("animationend", handleMissedBall);
 
   //Returns string of current transform values akin to "matrix(2.28722, 0, 0, 2.28722, 420.764, 536.726)"
   let transform = window.getComputedStyle(this).getPropertyValue("transform");
@@ -241,9 +259,12 @@ function ballHit() {
 
   //Sets default position and scale of element to values matching to when it was clicked
   this.style.transform = "translate(" + values[4] + "px, " + values[5] + "px)";
+  this.style.transform += "scale(1)";
 
   //Sends it flying from default position
   this.firstElementChild.classList.add("ball_hit");
+
+  incrementPoints();
 
   this.addEventListener("animationend", ballGone);
 }
@@ -267,7 +288,7 @@ function ballGone() {
   } else if (containers5.includes(this)) {
     baseball5Container.addEventListener("mousedown", ballHit);
   }
-  this.addEventListener("animationend", handleAnimationEnd);
+  this.addEventListener("animationend", handleMissedBall);
   handleAnimationEnd.call(this);
 }
 
@@ -279,6 +300,8 @@ function trashHit() {
 
   this.firstElementChild.classList.add("zoom_out");
   this.lastElementChild.classList.add("zoom_in");
+
+  decrementPoints();
 
   this.addEventListener("animationend", trashGone);
 }
@@ -296,8 +319,34 @@ function trashGone() {
 }
 
 
+function incrementPoints() {
+  points++;
+  document.querySelector("#score").innerText = points;
 
+  if(points == 5) {
+    console.log("WIN GAME");  
+  }
+}
 
+function decrementPoints() {
+  points--;
+  document.querySelector("#score").innerText = points;
+}
 
-//Ballhit stopper med at virke fordi animationend ikke kan køre to gange som i trashHit/Gone, fordi animationen kun er på container i ball hit.
-//ballHit skal derfor ændres til peters forslag, eller bruge et andet mønster.
+function loseLives() {
+  if (lives > 1) {
+    document.querySelector("#heart_"+lives).classList.add("broken_heart");
+    lives--;
+  } else {
+    //gameover
+    gameOver();
+  }
+}
+
+function gameOver() {
+  document.querySelector("#game_over").style = "display:block;"
+}
+
+function retryGame() {
+  window.location = window.location;
+}
