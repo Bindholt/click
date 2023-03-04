@@ -1,11 +1,14 @@
 "use strict";
 window.addEventListener("load", onload);
 
-let lives = 3;
-let points = 0;
+let points;
+let lives;
+let gameRunning;
+
 const startGameBtn = document.querySelector("#start_game_btn");
 const gameOverBtn = document.querySelector("#game_over_btn");
 const levelCompleteBtn = document.querySelector("#level_complete_btn");
+
 const eggContainer = document.querySelector("#egg_container");
 const egg2Container = document.querySelector("#egg_2_container");
 const toiletPaperContainer = document.querySelector(
@@ -48,14 +51,57 @@ let currentAnimation4 = "";
 let currentAnimation5 = "";
 
 function onload() {
+  document.querySelector("#level_complete").classList.add("hidden");
+  document.querySelector("#game_over").classList.add("hidden");
   startGameBtn.classList.add("pulse");
   startGameBtn.addEventListener("click", startGame);
   gameOverBtn.addEventListener("click", retryGame);
-  levelCompleteBtn.addEventListener("click", retryGame);
+  levelCompleteBtn.addEventListener("click", goToStart);
 }
 
 function startGame(){
-  document.querySelector("#start").style = "display:none;"
+  gameRunning = true;
+  points = 0;
+  lives = 3;
+  document.querySelector("#start").classList.add("hidden");
+  document.querySelector("#time_container").classList.add("timer");
+  document.querySelector("#time_container").addEventListener("animationend", timesUp);
+
+  setEventListeners();
+
+  setAnimation(
+    containers[Math.floor(Math.random() * containers.length)],
+    animations,
+    "",
+    1
+  );
+  setAnimation(
+    containers2[Math.floor(Math.random() * containers2.length)],
+    animations2,
+    "",
+    2
+  );
+  setAnimation(
+    containers3[Math.floor(Math.random() * containers3.length)],
+    animations3,
+    "",
+    3
+  );
+  setAnimation(
+    containers4[Math.floor(Math.random() * containers4.length)],
+    animations4,
+    "",
+    4
+  );
+  setAnimation(
+    containers5[Math.floor(Math.random() * containers5.length)],
+    animations5,
+    "",
+    5
+  );
+}
+
+function setEventListeners() {
   eggContainer.addEventListener("animationend", handleAnimationEnd);
   toiletPaperContainer.addEventListener("animationend", handleAnimationEnd);
   baseballContainer.addEventListener("animationend", handleMissedBall);
@@ -88,37 +134,6 @@ function startGame(){
   baseball3Container.addEventListener("mousedown", ballHit);
   baseball4Container.addEventListener("mousedown", ballHit);
   baseball5Container.addEventListener("mousedown", ballHit);
-
-  setAnimation(
-    containers[Math.floor(Math.random() * containers.length)],
-    animations,
-    "",
-    1
-  );
-  setAnimation(
-    containers2[Math.floor(Math.random() * containers2.length)],
-    animations2,
-    "",
-    2
-  );
-  setAnimation(
-    containers3[Math.floor(Math.random() * containers3.length)],
-    animations3,
-    "",
-    3
-  );
-  setAnimation(
-    containers4[Math.floor(Math.random() * containers4.length)],
-    animations4,
-    "",
-    4
-  );
-  setAnimation(
-    containers5[Math.floor(Math.random() * containers5.length)],
-    animations5,
-    "",
-    5
-  );
 }
 
 function setAnimation(container, animations, currentAnimation, pitcherNumber) {
@@ -271,12 +286,13 @@ function ballHit() {
 
 function ballGone() {
   console.log("ballGone");
-    this.style.animation = "none";
+  this.style.animation = "none";
   this.offsetWidth;
   this.style.animation = null;
   this.removeEventListener("animationend", ballGone);
   this.firstElementChild.classList.remove("ball_hit");
   this.style.transform = "translate(-200%)";
+
   if (containers.includes(this)) {
     baseballContainer.addEventListener("mousedown", ballHit);
   } else if (containers2.includes(this)) {
@@ -288,8 +304,11 @@ function ballGone() {
   } else if (containers5.includes(this)) {
     baseball5Container.addEventListener("mousedown", ballHit);
   }
+
   this.addEventListener("animationend", handleMissedBall);
-  handleAnimationEnd.call(this);
+  if (gameRunning) {
+    handleAnimationEnd.call(this);
+  }
 }
 
 function trashHit() {
@@ -315,17 +334,20 @@ function trashGone() {
   this.firstElementChild.classList.remove("zoom_out");
   this.lastElementChild.classList.remove("zoom_in");
   this.addEventListener("mousedown", trashHit);
-  this.addEventListener("animationend", handleAnimationEnd);
-}
 
+  if(gameRunning) {
+  this.addEventListener("animationend", handleAnimationEnd);
+
+  }
+}
 
 function incrementPoints() {
   points++;
-  document.querySelector("#score").innerText = points;
+  displayPoints();
+}
 
-  if(points == 5) {
-    console.log("WIN GAME");  
-  }
+function displayPoints() {
+  document.querySelector("#score").innerText = points;
 }
 
 function decrementPoints() {
@@ -344,9 +366,81 @@ function loseLives() {
 }
 
 function gameOver() {
-  document.querySelector("#game_over").style = "display:block;"
+  gameRunning = false;
+  document.querySelector("#game_over").classList.remove("hidden");
+  removeEventListeners();
+}
+
+function removeEventListeners() {
+  document.querySelector("#time_container").removeEventListener("animationend", timesUp);
+  document.querySelector("#time_container").classList.remove("timer");
+  document.querySelector("#time_container").offsetWidth;
+  eggContainer.removeEventListener("animationend", handleAnimationEnd);
+  toiletPaperContainer.removeEventListener("animationend", handleAnimationEnd);
+  baseballContainer.removeEventListener("animationend", handleMissedBall);
+  sodaContainer.removeEventListener("animationend", handleAnimationEnd);
+  tomatoContainer.removeEventListener("animationend", handleAnimationEnd);
+  baseball2Container.removeEventListener("animationend", handleMissedBall);
+  hotdogContainer.removeEventListener("animationend", handleAnimationEnd);
+  toiletPaper2Container.removeEventListener("animationend", handleAnimationEnd);
+  baseball3Container.removeEventListener("animationend", handleMissedBall);
+  soda2Container.removeEventListener("animationend", handleAnimationEnd);
+  tomato2Container.removeEventListener("animationend", handleAnimationEnd);
+  baseball4Container.removeEventListener("animationend", handleMissedBall);
+  egg2Container.removeEventListener("animationend", handleAnimationEnd);
+  hotdog2Container.removeEventListener("animationend", handleAnimationEnd);
+  baseball5Container.removeEventListener("animationend", handleMissedBall);
+
+  eggContainer.removeEventListener("mousedown", trashHit);
+  toiletPaperContainer.removeEventListener("mousedown", trashHit);
+  sodaContainer.removeEventListener("mousedown", trashHit);
+  tomatoContainer.removeEventListener("mousedown", trashHit);
+  hotdogContainer.removeEventListener("mousedown", trashHit);
+  toiletPaper2Container.removeEventListener("mousedown", trashHit);
+  soda2Container.removeEventListener("mousedown", trashHit);
+  tomato2Container.removeEventListener("mousedown", trashHit);
+  egg2Container.removeEventListener("mousedown", trashHit);
+  hotdog2Container.removeEventListener("mousedown", trashHit);
+
+  baseballContainer.removeEventListener("mousedown", ballHit);
+  baseball2Container.removeEventListener("mousedown", ballHit);
+  baseball3Container.removeEventListener("mousedown", ballHit);
+  baseball4Container.removeEventListener("mousedown", ballHit);
+  baseball5Container.removeEventListener("mousedown", ballHit);
 }
 
 function retryGame() {
-  window.location = window.location;
+  document.querySelector("#heart_1").classList.remove("broken_heart");
+  document.querySelector("#heart_2").classList.remove("broken_heart");
+  document.querySelector("#heart_3").classList.remove("broken_heart");
+  document.querySelector("#level_complete").classList.add("hidden");
+  document.querySelector("#game_over").classList.add("hidden");
+  points = 0;
+  displayPoints();
+  startGame();
+}
+
+function timesUp() {
+  if (points > 5) {
+    levelComplete();
+  } else {
+    gameOver();
+  }
+}
+
+function levelComplete() {
+  gameRunning = false;
+  document.querySelector("#level_complete").classList.remove("hidden");
+  removeEventListeners();
+}
+
+function goToStart() {
+  document.querySelector("#heart_1").classList.remove("broken_heart");
+  document.querySelector("#heart_2").classList.remove("broken_heart");
+  document.querySelector("#heart_3").classList.remove("broken_heart");
+  document.querySelector("#level_complete").classList.add("hidden");
+  document.querySelector("#start").classList.remove("hidden");
+  points = 0;
+  displayPoints();
+
 }

@@ -146,7 +146,9 @@
         <div id="game_foreground"></div>
         <div id="game_ui">
           <div id="time_board" class="big_container">
-            <img src="images/hourglass.png" />
+            <div id="time_container">
+              <img id="time_sprite" src="images/hourglass.png" />
+            </div>
           </div>
           <div id="score_board" class="big_container">
             <span id="score">0</span>
@@ -162,17 +164,6 @@
             <img src="images/heart.png" />
           </div>
         </div>
-      </div>
-      <div id="start">
-        <h2>Baseball!</h2>
-        <p>The tough boys from baseball practice do not believe that you can hit all their pitches.</p>
-        <p>They have bet you that you won't last very long, with the good old</p>
-        <p>"Three Strikes and You're OUT" ruling.</p>
-        <p>Try your best to not get striked out until the timer runs out, but you best BEWARE,</p>
-        <p>because these toughies have a few other items that they might toss at you,</p>
-        <p>and you definitely will want to avoid accidentally hitting those.</p>
-        <p>Hitting one of their non-baseball objects will take away one of your points for hitting the ball.</p>
-        <div id="start_game_btn">START THE GAME</div>
       </div>
       <div id="game_over">
         <h2>GAME OVER!</h2>
@@ -196,6 +187,17 @@
         <p>"I bet you can't do that twice"</p>
         <p>You think for a moment while you try to decide if you should embarress them once again....</p>
         <div id="level_complete_btn" class="pulse">TRY AGAIN</div>
+      </div>
+       <div id="start">
+        <h2>Baseball!</h2>
+        <p>The tough boys from baseball practice do not believe that you can hit all their pitches.</p>
+        <p>They have bet you that you won't last very long, with the good old</p>
+        <p>"Three Strikes and You're OUT" ruling.</p>
+        <p>Try your best to not get striked out until the timer runs out, but you best BEWARE,</p>
+        <p>because these toughies have a few other items that they might toss at you,</p>
+        <p>and you definitely will want to avoid accidentally hitting those.</p>
+        <p>Hitting one of their non-baseball objects will take away one of your points for hitting the ball.</p>
+        <div id="start_game_btn">START THE GAME</div>
       </div>
     </div>
     <script src="app.js"></script>

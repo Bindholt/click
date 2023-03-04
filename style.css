@@ -10,6 +10,10 @@ img {
   width: 100%;
 }
 
+.hidden {
+  display:none;
+}
+
 #screen {
   display: grid;
   grid-template-columns: 100%;
@@ -20,14 +24,13 @@ img {
 }
 
 #game_over {
-  display: grid;
+  /* display: grid; */
   grid-template-columns: 100%;
   grid-template-rows: 100%;
   aspect-ratio: 16 / 9;
   width: 100%;
   z-index: 1;
   position: absolute;
-  display: none;
   background-color: rgba(12, 66, 7);
   text-align: center;
   font-size: 200%;
@@ -44,14 +47,13 @@ img {
 }
 
 #start {
-  display: grid;
+  /* display: grid; */
   grid-template-columns: 100%;
   grid-template-rows: 100%;
   aspect-ratio: 16 / 9;
   width: 100%;
   z-index: 1;
   position: absolute;
-  display: block;
   background-color: green;
   text-align: center;
   font-size: 200%;
@@ -67,14 +69,13 @@ img {
 }
 
 #level_complete {
-  display: grid;
+  /* display: grid; */
   grid-template-columns: 100%;
   grid-template-rows: 100%;
   aspect-ratio: 16 / 9;
   width: 100%;
   z-index: 1;
   position: absolute;
-  display: none;
   background-color: green;
   text-align: center;
   font-size: 200%;
@@ -120,7 +121,7 @@ img {
   width: 4%;
   position: absolute;
   transform: translateX(-200%);
-  animation-duration: 4s;
+  animation-duration: 2s;
   z-index: 1;
 }
 
@@ -625,7 +626,7 @@ img {
 
 .ball_hit {
   animation-name: ball_hit;
-  animation-duration: 2.5s;
+  animation-duration: 1s;
   animation-timing-function: ease-out;
   animation-fill-mode: backwards;
   animation-iteration-count: 1;
@@ -660,3 +661,21 @@ img {
   }
 }
 
+/* ------------ TIMER ANIMATIONER ------------ */
+
+.timer {
+    animation-name: timer;
+    animation-duration: 30s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes timer {
+    0% {
+        scale: 1 1;
+    }
+    100% {
+        scale: 1 0;
+    }
+}
