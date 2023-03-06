@@ -9,14 +9,12 @@ const startGameBtn = document.querySelector("#start_game_btn");
 const gameOverBtn = document.querySelector("#game_over_btn");
 const levelCompleteBtn = document.querySelector("#level_complete_btn");
 
+const backgroundSFX = document.querySelector("#sfx_background");
+
 const eggContainer = document.querySelector("#egg_container");
 const egg2Container = document.querySelector("#egg_2_container");
-const toiletPaperContainer = document.querySelector(
-  "#toilet_paper_1_container"
-);
-const toiletPaper2Container = document.querySelector(
-  "#toilet_paper_2_container"
-);
+const toiletPaperContainer = document.querySelector("#toilet_paper_1_container");
+const toiletPaper2Container = document.querySelector("#toilet_paper_2_container");
 const tomatoContainer = document.querySelector("#tomato_1_container");
 const tomato2Container = document.querySelector("#tomato_2_container");
 const hotdogContainer = document.querySelector("#hotdog_container");
@@ -31,11 +29,7 @@ const baseball5Container = document.querySelector("#baseball_5_container");
 
 const containers = [eggContainer, toiletPaperContainer, baseballContainer];
 const containers2 = [sodaContainer, tomatoContainer, baseball2Container];
-const containers3 = [
-  hotdogContainer,
-  toiletPaper2Container,
-  baseball3Container,
-];
+const containers3 = [ hotdogContainer, toiletPaper2Container,baseball3Container,];
 const containers4 = [soda2Container, tomato2Container, baseball4Container];
 const containers5 = [egg2Container, hotdog2Container, baseball5Container];
 
@@ -63,9 +57,15 @@ function startGame(){
   gameRunning = true;
   points = 0;
   lives = 3;
-  document.querySelector("#start").classList.add("hidden");
+  //todo: implementer kode til nedenstående linje ift reset game 
+  document.querySelector("#start").classList.add("zoom_out");
+  document.querySelector("#start").addEventListener("animationend", zoomOutEnd);
+  //document.querySelector("#start").classList.add("hidden");
   document.querySelector("#time_container").classList.add("timer");
   document.querySelector("#time_container").addEventListener("animationend", timesUp);
+
+  backgroundSFX.play();
+  backgroundSFX.volume = 0.1;
 
   setEventListeners();
 
@@ -259,6 +259,11 @@ function animationEnd5() {
 
 function ballHit() {
   console.log("ballHit");
+
+  let audio = document.querySelector("#sfx_baseball");
+
+  audio.currentTime = 0;
+  audio.play();
   //Removes click event from ball to prevent exploiting future point system
   this.removeEventListener("mousedown", ballHit);
   this.removeEventListener("animationend", handleMissedBall);
@@ -317,6 +322,7 @@ function trashHit() {
   this.removeEventListener("animationend", handleAnimationEnd);
   this.classList.add("paused");
 
+  this.querySelector("audio").play();
   this.firstElementChild.classList.add("zoom_out");
   this.lastElementChild.classList.add("zoom_in");
 
@@ -357,10 +363,13 @@ function decrementPoints() {
 
 function loseLives() {
   if (lives > 1) {
+    document.querySelector("#sfx_miss").currentTime = 0;
+    document.querySelector("#sfx_miss").play();
     document.querySelector("#heart_"+lives).classList.add("broken_heart");
     lives--;
   } else {
     //gameover
+    document.querySelector("#sfx_game_over").play();
     gameOver();
   }
 }
@@ -368,10 +377,17 @@ function loseLives() {
 function gameOver() {
   gameRunning = false;
   document.querySelector("#game_over").classList.remove("hidden");
-  removeEventListeners();
+  document.querySelector("#game_over").classList.add("zoom_in");
+  document.querySelector("#game_over").addEventListener("animationend", zoomInEnd);
+
+  stopGame();
 }
 
-function removeEventListeners() {
+function stopGame() {
+
+  backgroundSFX.pause();
+  backgroundSFX.currentTime = 0;
+
   document.querySelector("#time_container").removeEventListener("animationend", timesUp);
   document.querySelector("#time_container").classList.remove("timer");
   document.querySelector("#time_container").offsetWidth;
@@ -414,14 +430,16 @@ function retryGame() {
   document.querySelector("#heart_2").classList.remove("broken_heart");
   document.querySelector("#heart_3").classList.remove("broken_heart");
   document.querySelector("#level_complete").classList.add("hidden");
-  document.querySelector("#game_over").classList.add("hidden");
+  document.querySelector("#game_over").classList.add("zoom_out");
+  document.querySelector("#game_over").addEventListener("animationend", zoomOutEnd);
+  
   points = 0;
   displayPoints();
   startGame();
 }
 
 function timesUp() {
-  if (points > 5) {
+  if (points > -1) {
     levelComplete();
   } else {
     gameOver();
@@ -431,16 +449,33 @@ function timesUp() {
 function levelComplete() {
   gameRunning = false;
   document.querySelector("#level_complete").classList.remove("hidden");
-  removeEventListeners();
+  document.querySelector("#level_complete").classList.add("zoom_in");
+  document.querySelector("#level_complete").addEventListener("animationend", zoomInEnd);
+  document.querySelector("#sfx_game_over").play();
+  stopGame();
 }
 
 function goToStart() {
   document.querySelector("#heart_1").classList.remove("broken_heart");
   document.querySelector("#heart_2").classList.remove("broken_heart");
   document.querySelector("#heart_3").classList.remove("broken_heart");
-  document.querySelector("#level_complete").classList.add("hidden");
+  document.querySelector("#level_complete").classList.add("zoom_out");
+  document.querySelector("#level_complete").addEventListener("animationend", zoomOutEnd);
   document.querySelector("#start").classList.remove("hidden");
   points = 0;
   displayPoints();
 
+}
+
+function zoomOutEnd() {
+  this.removeEventListener("animationend", zoomOutEnd);
+  this.classList.remove("zoom_out");
+  this.offsetWidth;
+  this.classList.add("hidden");
+}
+
+function zoomInEnd() {
+  this.removeEventListener("animationend", zoomInEnd);
+  this.classList.remove("zoom_in");
+  this.offsetWidth;
 }

@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   cursor: url(./images/baseball_cursor_65x65.png) 60 10, auto;
   font-family: cursive;
 }
@@ -33,7 +33,7 @@ img {
   position: absolute;
   background-color: rgba(12, 66, 7);
   text-align: center;
-  font-size: 200%;
+  font-size: 100%;
   color: white
 }
 
@@ -56,7 +56,7 @@ img {
   position: absolute;
   background-color: green;
   text-align: center;
-  font-size: 200%;
+  font-size: 100%;
 }
 
 #start_game_btn {
@@ -74,11 +74,11 @@ img {
   grid-template-rows: 100%;
   aspect-ratio: 16 / 9;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
   position: absolute;
-  background-color: green;
+  background-color: rgb(53, 100, 195);
   text-align: center;
-  font-size: 200%;
+  font-size: 100%;
 }
 
 #level_complete_btn {
@@ -181,7 +181,7 @@ img {
 
 #score {
   padding-left: 50%;
-  font-size: 700%;
+  font-size: 300%;
   width: 3%;
 }
 
@@ -602,7 +602,7 @@ img {
   }
 
   100% {
-    scale: 1.5;
+    scale: 1;
   }
 }
 
@@ -665,7 +665,7 @@ img {
 
 .timer {
     animation-name: timer;
-    animation-duration: 30s;
+    animation-duration: 5s;
     animation-iteration-count: 1;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
