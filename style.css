@@ -121,7 +121,7 @@ img {
   width: 4%;
   position: absolute;
   transform: translateX(-200%);
-  animation-duration: 2s;
+  animation-duration: 3s;
   z-index: 1;
 }
 
@@ -206,7 +206,7 @@ img {
   animation-name: pitcher_straight_1;
   animation-timing-function: linear;
   animation-iteration-count: 1;
-  animation-delay: 3s;
+  animation-delay: 1.5s;
 }
 
 @keyframes pitcher_straight_1 {
@@ -224,7 +224,7 @@ img {
   animation-timing-function: linear;
   animation-iteration-count: 1;
   transform-origin: -10% 50%;
-  animation-delay: 2s;
+  animation-delay: 1s;
 }
 
 @keyframes pitcher_left_1 {
@@ -254,7 +254,7 @@ img {
   animation-timing-function: linear;
   animation-iteration-count: 1;
   transform-origin: 50% 0%;
-  animation-delay: 5s;
+  animation-delay: 2.5s;
 }
 
 @keyframes pitcher_right_1 {
@@ -283,7 +283,7 @@ img {
   animation-name: pitcher_straight_2;
   animation-timing-function: linear;
   animation-iteration-count: 1;
-  animation-delay: 3s;
+  animation-delay: 1.5s;
 }
 
 @keyframes pitcher_straight_2 {
@@ -301,7 +301,7 @@ img {
   animation-timing-function: linear;
   animation-iteration-count: 1;
   transform-origin: -10% 50%;
-  animation-delay: 6s;
+  animation-delay: 3s;
 }
 
 @keyframes pitcher_left_2 {
@@ -331,7 +331,7 @@ img {
   animation-timing-function: linear;
   animation-iteration-count: 1;
   transform-origin: 50% 0%;
-  animation-delay: 1s;
+  animation-delay: 0.5s;
 }
 
 @keyframes pitcher_right_2 {
@@ -360,7 +360,7 @@ img {
   animation-name: pitcher_straight_3;
   animation-timing-function: linear;
   animation-iteration-count: 1;
-  animation-delay: 5s;
+  animation-delay: 2.5s;
 }
 
 @keyframes pitcher_straight_3 {
@@ -377,7 +377,7 @@ img {
   animation-timing-function: linear;
   animation-iteration-count: 1;
   transform-origin: -10% 50%;
-  animation-delay: 2s;
+  animation-delay: 1s;
 }
 
 @keyframes pitcher_left_3 {
@@ -407,7 +407,7 @@ img {
   animation-timing-function: linear;
   animation-iteration-count: 1;
   transform-origin: 50% 0%;
-  animation-delay: 3s;
+  animation-delay: 1.5s;
 }
 
 @keyframes pitcher_right_3 {
@@ -436,7 +436,7 @@ img {
   animation-name: pitcher_straight_4;
   animation-timing-function: linear;
   animation-iteration-count: 1;
-  animation-delay: 8s;
+  animation-delay: 4s;
 }
 
 @keyframes pitcher_straight_4 {
@@ -454,7 +454,7 @@ img {
   animation-timing-function: linear;
   animation-iteration-count: 1;
   transform-origin: -10% 50%;
-  animation-delay: 4s;
+  animation-delay: 2s;
 }
 
 @keyframes pitcher_left_4 {
@@ -484,7 +484,7 @@ img {
   animation-timing-function: linear;
   animation-iteration-count: 1;
   transform-origin: 30% -10%;
-  animation-delay: 1s;
+  animation-delay: 0.5s;
 }
 
 @keyframes pitcher_right_4 {
@@ -513,7 +513,7 @@ img {
   animation-name: pitcher_straight_5;
   animation-timing-function: linear;
   animation-iteration-count: 1;
-  animation-delay: 3s;
+  animation-delay: 1.5s;
 }
 
 @keyframes pitcher_straight_5 {
@@ -531,7 +531,7 @@ img {
   animation-timing-function: linear;
   animation-iteration-count: 1;
   transform-origin: -10% 50%;
-  animation-delay: 2s;
+  animation-delay: 1s;
 }
 
 @keyframes pitcher_left_5 {
@@ -561,7 +561,7 @@ img {
   animation-timing-function: linear;
   animation-iteration-count: 1;
   transform-origin: 30% -10%;
-  animation-delay: 5s;
+  animation-delay: 2.5s;
 }
 
 @keyframes pitcher_right_5 {
@@ -665,7 +665,7 @@ img {
 
 .timer {
     animation-name: timer;
-    animation-duration: 5s;
+    animation-duration: 50s;
     animation-iteration-count: 1;
     animation-timing-function: linear;
     animation-fill-mode: forwards;

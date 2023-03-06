@@ -362,15 +362,17 @@ function decrementPoints() {
 }
 
 function loseLives() {
-  if (lives > 1) {
-    document.querySelector("#sfx_miss").currentTime = 0;
-    document.querySelector("#sfx_miss").play();
-    document.querySelector("#heart_"+lives).classList.add("broken_heart");
-    lives--;
-  } else {
-    //gameover
-    document.querySelector("#sfx_game_over").play();
-    gameOver();
+  if(gameRunning) {
+    if (lives > 1) {
+      document.querySelector("#sfx_miss").currentTime = 0;
+      document.querySelector("#sfx_miss").play();
+      document.querySelector("#heart_"+lives).classList.add("broken_heart");
+      lives--;
+    } else {
+      //gameover
+      document.querySelector("#sfx_game_over").play();
+      gameOver();
+    }
   }
 }
 
@@ -439,7 +441,7 @@ function retryGame() {
 }
 
 function timesUp() {
-  if (points > -1) {
+  if (points > 4) {
     levelComplete();
   } else {
     gameOver();
