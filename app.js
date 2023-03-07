@@ -57,10 +57,9 @@ function startGame(){
   gameRunning = true;
   points = 0;
   lives = 3;
-  //todo: implementer kode til nedenstående linje ift reset game 
+ 
   document.querySelector("#start").classList.add("zoom_out");
   document.querySelector("#start").addEventListener("animationend", zoomOutEnd);
-  //document.querySelector("#start").classList.add("hidden");
   document.querySelector("#time_container").classList.add("timer");
   document.querySelector("#time_container").addEventListener("animationend", timesUp);
 

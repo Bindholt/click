@@ -4,6 +4,7 @@ body {
   /* overflow: hidden; */
   cursor: url(./images/baseball_cursor_65x65.png) 60 10, auto;
   font-family: cursive;
+  user-select: none;
 }
 
 img {
