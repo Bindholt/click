@@ -441,7 +441,7 @@ function retryGame() {
 }
 
 function timesUp() {
-  if (points > 4) {
+  if (points > 9) {
     levelComplete();
   } else {
     gameOver();
@@ -453,6 +453,7 @@ function levelComplete() {
   document.querySelector("#level_complete").classList.remove("hidden");
   document.querySelector("#level_complete").classList.add("zoom_in");
   document.querySelector("#level_complete").addEventListener("animationend", zoomInEnd);
+  document.querySelector("#level_complete_points").innerText = points;
   document.querySelector("#sfx_level_complete").play();
   stopGame();
 }
