@@ -122,7 +122,7 @@ img {
   width: 4%;
   position: absolute;
   transform: translateX(-200%);
-  animation-duration: 2s;
+  animation-duration: 2.5s;
   z-index: 1;
 }
 
